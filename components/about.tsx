@@ -66,7 +66,7 @@ export default function About() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl" />
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/homa-appliances-sz1CHL7Pky0-unsplash-SaQWyjIi7WpZRQryrMEjrBSTUWahKK.jpg"
+                src="/robot-2791671.jpg"
                 alt="Robotic arm in factory"
                 className="relative rounded-2xl w-full h-auto object-cover"
               />

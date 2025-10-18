@@ -59,10 +59,9 @@ export default function Showcase() {
             </div>
           </div>
 
-          {/* Content section with image crossing boundary */}
-          <div className="grid md:grid-cols-2 gap-8 items-center relative">
-            {/* Left content */}
-            <div className="space-y-6 z-10">
+          {/* Content section - centered */}
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="space-y-6">
               <div>
                 <p className="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2">
                   What we do
@@ -78,31 +77,26 @@ export default function Showcase() {
                 worldwide.
               </p>
 
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-1 h-12 bg-gradient-to-b from-primary to-accent rounded-full mt-1 flex-shrink-0" />
+              <div className="grid sm:grid-cols-2 gap-6 mt-8">
+                <div className="flex flex-col items-center gap-3 p-6 bg-muted/30 rounded-xl">
+                  <div className="w-1 h-12 bg-gradient-to-b from-primary to-accent rounded-full" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Advanced Precision</h4>
+                    <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Advanced Precision</h4>
                     <p className="text-muted-foreground text-xs sm:text-sm">
                       Micron-level accuracy for complex manufacturing tasks
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-1 h-12 bg-gradient-to-b from-accent to-primary rounded-full mt-1 flex-shrink-0" />
+                <div className="flex flex-col items-center gap-3 p-6 bg-muted/30 rounded-xl">
+                  <div className="w-1 h-12 bg-gradient-to-b from-accent to-primary rounded-full" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Intelligent Integration</h4>
+                    <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Intelligent Integration</h4>
                     <p className="text-muted-foreground text-xs sm:text-sm">
                       Seamlessly integrates with existing factory systems
                     </p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Right side - no image */}
-            <div className="relative h-64 sm:h-80 md:h-full md:min-h-96">
-              {/* Empty space for balance */}
             </div>
           </div>
 
