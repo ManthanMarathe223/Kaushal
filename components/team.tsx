@@ -10,12 +10,12 @@ const teamMembers = [
   },
   {
     name: "Manthan Marathe",
-    role: "Head of Software Department",
+    role: "Co-Founder and Software Head",
     image: "/professional-software-engineer.png",
   },
   {
-    name: "Utkarsh",
-    role: "—",
+    name: "Utkarsh Raut",
+    role: "Co-Founder and Hardware Head",
     image: "/professional-headshot-team-member.jpg",
   },
 ]

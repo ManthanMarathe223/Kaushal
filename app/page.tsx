@@ -5,6 +5,7 @@ import Header from "@/components/header"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import Technology from "@/components/technology"
+import RoboticArm from "@/components/robotic-arm"
 import Team from "@/components/team"
 import Showcase from "@/components/showcase"
 import Contact from "@/components/contact"
@@ -43,6 +44,7 @@ export default function Home() {
       <Hero />
       <About />
       <Technology />
+      <RoboticArm />
       <Team />
       <Showcase />
       <Contact />
