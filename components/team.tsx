@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: "Utkarsh Raut",
     role: "Co-Founder and Hardware Head",
-    image: "/professional-headshot-team-member.jpg",
+    image: "/professional-headshot-tech-founder.jpg",
   },
 ]
 

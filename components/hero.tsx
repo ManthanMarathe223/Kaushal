@@ -26,6 +26,11 @@ export default function Hero() {
       tagline: "Smart Robotic Hands for Smarter Manufacturing",
       align: "left" as const,
     },
+    {
+      image: "/automated-car-assembly-stockcake.jpg",
+      tagline: "Transforming Manufacturing with Advanced Automation",
+      align: "right" as const,
+    },
   ]
 
   useEffect(() => {

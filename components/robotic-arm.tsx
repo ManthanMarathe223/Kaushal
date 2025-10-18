@@ -41,7 +41,7 @@ export default function RoboticArm() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative overflow-hidden rounded-2xl border border-border">
                 <img
-                  src="/advanced-industrial-robotic-hand-with-precision-gr.jpg"
+                  src="/Robotic ARM.jpg"
                   alt="6-DOF Robotic Arm"
                   className="w-full h-auto object-cover"
                 />

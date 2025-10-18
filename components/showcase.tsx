@@ -100,18 +100,9 @@ export default function Showcase() {
               </div>
             </div>
 
-            {/* Right image - positioned to cross boundary */}
+            {/* Right side - no image */}
             <div className="relative h-64 sm:h-80 md:h-full md:min-h-96">
-              <div className="absolute -right-8 sm:-right-12 md:-right-24 top-1/2 transform -translate-y-1/2 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 z-20">
-                <div className="relative w-full h-full">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30 rounded-3xl blur-2xl" />
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robot-2791678-8zRlVHW0LbWS9ItPUfwvtfFCnedfII.jpg"
-                    alt="Robotic arm in action"
-                    className="relative w-full h-full object-cover rounded-3xl shadow-2xl"
-                  />
-                </div>
-              </div>
+              {/* Empty space for balance */}
             </div>
           </div>
 
