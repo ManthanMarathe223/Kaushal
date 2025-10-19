@@ -34,7 +34,7 @@ export default function Showcase() {
         >
           {/* Large title with background image fill effect */}
           <div className="relative mb-12">
-            <div className="relative h-24 sm:h-32 md:h-40 flex items-center justify-start overflow-hidden">
+            <div className="relative h-24 sm:h-32 md:h-40 flex items-center justify-center overflow-hidden">
               {/* Background image with overlay */}
               <div
                 className="absolute inset-0 z-0"
@@ -47,7 +47,7 @@ export default function Showcase() {
                 }}
               />
               {/* Text with gradient overlay effect */}
-              <div className="relative z-10 px-4 md:px-8">
+              <div className="relative z-10 text-center">
                 <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-balance leading-tight">
                   <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                     Kaushal
@@ -79,7 +79,6 @@ export default function Showcase() {
 
               <div className="grid sm:grid-cols-2 gap-6 mt-8">
                 <div className="flex flex-col items-center gap-3 p-6 bg-muted/30 rounded-xl">
-                  <div className="w-1 h-12 bg-gradient-to-b from-primary to-accent rounded-full" />
                   <div>
                     <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Advanced Precision</h4>
                     <p className="text-muted-foreground text-xs sm:text-sm">
@@ -88,7 +87,6 @@ export default function Showcase() {
                   </div>
                 </div>
                 <div className="flex flex-col items-center gap-3 p-6 bg-muted/30 rounded-xl">
-                  <div className="w-1 h-12 bg-gradient-to-b from-accent to-primary rounded-full" />
                   <div>
                     <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Intelligent Integration</h4>
                     <p className="text-muted-foreground text-xs sm:text-sm">

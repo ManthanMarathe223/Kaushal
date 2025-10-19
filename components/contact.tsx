@@ -3,12 +3,14 @@
 import type React from "react"
 
 import { useEffect, useRef, useState } from "react"
-import { Mail, Linkedin, Instagram } from "lucide-react"
+import { Mail, Linkedin, Instagram, Loader2 } from "lucide-react"
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false)
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-  const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [showTooltip, setShowTooltip] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -28,13 +30,57 @@ export default function Contact() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const isValidGmail = (email: string): boolean => {
+    return email.trim().toLowerCase().endsWith("@gmail.com") && email.includes("@")
+  }
+
+  const isFormValid = (): boolean => {
+    return (
+      formData.name.trim().length > 0 &&
+      formData.message.trim().length > 0 &&
+      isValidGmail(formData.email)
+    )
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setFormData({ name: "", email: "", message: "" })
-      setSubmitted(false)
-    }, 3000)
+
+    if (!isFormValid()) {
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus("idle")
+
+    try {
+      const response = await fetch("/api/sendMail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", message: "" })
+        setTimeout(() => {
+          setSubmitStatus("idle")
+        }, 5000)
+      } else {
+        setSubmitStatus("error")
+        setTimeout(() => {
+          setSubmitStatus("idle")
+        }, 3000)
+      }
+    } catch (error) {
+      setSubmitStatus("error")
+      setTimeout(() => {
+        setSubmitStatus("idle")
+      }, 3000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -68,15 +114,22 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
+                <label className="block text-sm font-medium mb-2">Email (Gmail only)</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-cyan-500 focus:outline-none transition-colors"
-                  placeholder="your@email.com"
+                  className={`w-full px-4 py-3 rounded-lg bg-background border transition-colors ${
+                    formData.email && !isValidGmail(formData.email)
+                      ? "border-red-500 focus:border-red-500"
+                      : "border-border focus:border-cyan-500"
+                  } focus:outline-none`}
+                  placeholder="yourname@gmail.com"
                 />
+                {formData.email && !isValidGmail(formData.email) && (
+                  <p className="text-red-500 text-xs mt-1">Please enter a valid Gmail address</p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Message</label>
@@ -89,13 +142,49 @@ export default function Contact() {
                   placeholder="Tell us about your project..."
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105"
-              >
-                {submitted ? "Message Sent! ✓" : "Send Message"}
-              </button>
+              <div className="relative">
+                <button
+                  type="submit"
+                  disabled={!isFormValid() || isSubmitting}
+                  onMouseEnter={() => !isFormValid() && setShowTooltip(true)}
+                  onMouseLeave={() => setShowTooltip(false)}
+                  className={`w-full px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    isFormValid() && !isSubmitting
+                      ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105"
+                      : "bg-muted text-muted-foreground cursor-not-allowed"
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <Loader2 className="animate-spin" size={20} />
+                      Sending...
+                    </span>
+                  ) : submitStatus === "success" ? (
+                    "Message Sent! ✓"
+                  ) : (
+                    "Send Message"
+                  )}
+                </button>
+                {showTooltip && !isFormValid() && (
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-foreground text-background px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg">
+                    Please fill the form properly
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-foreground rotate-45"></div>
+                  </div>
+                )}
+              </div>
             </form>
+
+            {submitStatus === "success" && (
+              <div className="mb-8 p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-600 text-center animate-in slide-in-from-top duration-300">
+                Your message has been sent successfully! Check your email for confirmation.
+              </div>
+            )}
+
+            {submitStatus === "error" && (
+              <div className="mb-8 p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-600 text-center animate-in slide-in-from-top duration-300">
+                Failed to send message. Please try again later.
+              </div>
+            )}
 
             <div className="border-t border-border pt-8">
               <p className="text-center text-muted-foreground mb-6">Connect with us on social media</p>
