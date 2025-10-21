@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: "Utkarsh Raut",
     role: "Co-Founder and Hardware Head",
-    image: "/professional-headshot-tech-founder.jpg",
+    image: "/WhatsApp Image 2025-10-20 at 10.02.40_db91d4a0.jpg",
   },
 ]
 

@@ -45,10 +45,10 @@ export default function Header({ isDark, toggleTheme }: HeaderProps) {
               Products
             </button>
             <button
-              onClick={() => scrollToSection("showcase")}
+              onClick={() => scrollToSection("robotic-arm")}
               className="text-sm font-medium hover:text-primary transition-colors"
             >
-              Our 6-DOF Robotic Arm
+              6 DOF
             </button>
             <button
               onClick={() => scrollToSection("team")}
@@ -97,10 +97,10 @@ export default function Header({ isDark, toggleTheme }: HeaderProps) {
               Products
             </button>
             <button
-              onClick={() => scrollToSection("showcase")}
+              onClick={() => scrollToSection("robotic-arm")}
               className="block w-full text-left px-4 py-2 rounded-lg hover:bg-muted transition-colors"
             >
-              Our 6-DOF Robotic Arm
+              6 DOF
             </button>
             <button
               onClick={() => scrollToSection("team")}
