@@ -6,17 +6,17 @@ const teamMembers = [
   {
     name: "Tanishq Khaire",
     role: "CEO & Founder",
-    image: "/professional-headshot-tech-founder.jpg",
+    image: "/Tanishq .jpg",
   },
   {
     name: "Manthan Marathe",
     role: "Co-Founder and Software Head",
-    image: "/professional-software-engineer.png",
+    image: "/Manthan Profile Picture.png",
   },
   {
     name: "Utkarsh Raut",
     role: "Co-Founder and Hardware Head",
-    image: "/WhatsApp Image 2025-10-20 at 10.02.40_db91d4a0.jpg",
+    image: "/Utkarsh Raut.jpg",
   },
 ]
 
